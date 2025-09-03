@@ -1,0 +1,135 @@
+---
+title: "02 - File Permissions Commands"
+---
+
+### 📁`file-permissions`
+
+```markdown
+#  02 - File Permissions Commands 
+
+This section contains essential Linux commands used to manage permissions, ownerships, and default access on files and directories.
+```
+
+
+## 1. `chmod`
+
+**Definition:** `chmod` stands for "change mode." It modifies the access permissions of files and directories.
+
+**What it does:** Changes permissions of a file or directory.
+
+**Key-Points:**
+*   Permissions are set using octal notation (e.g., 755) or symbolic notation (e.g., u+x).
+*   The three permission types are read (r), write (w), and execute (x).
+*   Applies to user (u), group (g), and others (o).
+*   Use `-R` for recursive changes on directories.
+
+**Use case:** Allow or restrict read/write/execute access for user, group, or others.
+
+**Example:**
+```bash
+chmod 755 script.sh     # rwxr-xr-x
+chmod +x run.sh         # add execute permission
+```
+
+
+## 2. `chown`
+
+**Definition:** `chown` stands for "change owner." It changes the user ownership of a file or directory.
+
+**What it does:** Changes the ownership of a file or directory.
+
+**Key-Points:**
+*   Can change both user and group ownership using the syntax `user:group`.
+*   Requires superuser (root) privileges to change ownership to another user.
+*   Use `-R` for recursive changes on directories and their contents.
+
+**Use case:** Reassign file ownership to another user or user-group.
+
+**Example:**
+```bash
+chown admin file.txt
+chown admin:devops script.sh
+```
+
+
+## 3. `chgrp`
+
+**Definition:** `chgrp` stands for "change group." It changes the group ownership of a file or directory.
+
+**What it does:** Changes the group ownership of a file or directory.
+
+**Key-Points:**
+*   Only the file owner or superuser can change the group ownership.
+*   Useful for assigning files to groups for shared access.
+*   Use `-R` for recursive changes on directories.
+
+**Use case:** Assign a file to a specific user group for shared access.
+
+**Example:**
+```bash
+chgrp developers report.log
+```
+
+
+
+## 4. `umask`
+
+**Definition:** `umask` sets the default permissions mask for newly created files and directories in the system.
+
+**What it does:** Sets default permissions for newly created files or directories.
+
+**Key-Points:**
+*   The umask value is subtracted from the maximum permissions (666 for files, 777 for directories).
+*   Affects the current shell session; can be set permanently in shell profile files.
+*   Common value is 022, resulting in 644 for files and 755 for directories.
+
+**Use case:** Control access settings for files/directories created by scripts or users.
+
+**Example:**
+```bash
+umask 022   # Default creates files with 644, dirs with 755
+```
+
+
+
+## 5. `stat`
+
+**Definition:** `stat` displays detailed information about a file or file system's status, including permissions, ownership, and timestamps.
+
+**What it does:** Displays detailed metadata about a file, including permissions and timestamps.
+
+**Key-Points:**
+*   Provides comprehensive details like file type, permissions, links, owner, group, size, and timestamps.
+*   Useful for troubleshooting permission and ownership issues.
+*   Output can be formatted in various ways using options.
+
+**Use case:** Check file permissions, ownership, and modification details.
+
+**Example:**
+```bash
+stat file.txt
+```
+
+
+
+## 6. `ls -l`
+
+**Definition:** `ls -l` is the long listing option of the `ls` command, displaying files with detailed information including permissions and ownership.
+
+**What it does:** Lists files in long format with permission, owner, group, size, and time info.
+
+**Key-Points:**
+*   The permission string starts with file type (d for directory, - for file), followed by rwx for user, group, and others.
+*   Fields include: permissions, number of links, owner, group, size, modification date, and filename.
+*   Essential for visually inspecting and verifying file permissions and ownership.
+
+**Use case:** Visually inspect permission bits and ownership of files in a directory.
+
+**Example:**
+```bash
+ls -l
+# Output: -rw-r--r-- 1 admin devops 243 Jul 15 14:10 notes.txt
+```
+
+
+

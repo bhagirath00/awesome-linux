@@ -1,0 +1,184 @@
+---
+title: "05 - Process Management Commands"
+---
+
+### 📁 `process-management`
+
+```markdown
+# 05 - Process Management Commands
+
+These commands help monitor, control, and optimize running processes in a Linux system.
+```
+
+## 1. `ps`
+
+**Definition:** `ps` stands for "process status." It provides a snapshot of current processes.
+
+**What it does:** Displays information about currently running processes.
+
+**Key-Points:**
+
+- `ps` shows processes for the current user and terminal by default.
+- `ps aux` displays all processes from all users in BSD format.
+- `ps -ef` shows all processes in standard format, commonly used in scripts.
+- Fields include PID, user, CPU%, memory%, command, etc.
+
+**Use case:** Check process IDs and running status.
+
+**Example:**
+
+```bash
+ps            # Shows processes in the current shell.
+ps aux        # Displays all processes from all users in full format.
+ps -ef        # Another common format for full process list, often used in scripting.
+```
+
+## 2. `top` / `htop`
+
+**Definition:** `top` and `htop` are interactive process viewers that display real-time system information and process activity.
+
+**What it does:** Real-time view of system processes and resource usage.
+
+**Key-Points:**
+
+- `top` is built-in; `htop` is more user-friendly with colors and mouse support.
+- Shows CPU, memory usage, load average, and process list sorted by CPU or memory.
+- Interactive commands: k (kill), r (renice), q (quit).
+- Press 'h' for help in top.
+
+**Use case:** Monitor CPU, memory, and running tasks interactively.
+
+**Example:**
+
+```bash
+top
+htop
+```
+
+## 3. `kill`
+
+**Definition:** `kill` sends signals to processes, most commonly to terminate them.
+
+**What it does:** Sends signals to terminate processes.
+
+**Key-Points:**
+
+- Default signal is SIGTERM (15); use -9 for SIGKILL (force kill).
+- Requires process ID (PID) or job number.
+- Use `killall` to kill by name instead of PID.
+- Signals: 1 (HUP), 9 (KILL), 15 (TERM), 18 (CONT), 19 (STOP).
+
+**Use case:** Force-stop unresponsive applications.
+
+**Example:**
+
+```bash
+kill -9 <PID>
+```
+
+## 4. `nice`
+
+**Definition:** `nice` runs a command with modified scheduling priority.
+
+**What it does:** Starts a process with a defined priority.
+
+**Key-Points:**
+
+- Priority ranges from -20 (highest) to 19 (lowest).
+- Lower nice values mean higher priority.
+- Use `renice` to change priority of running processes.
+- Normal users can only increase niceness; root can set any value.
+
+**Use case:** Reduce CPU impact of a background task.
+
+**Example:**
+
+```bash
+nice -n 10 script.sh
+```
+
+## 5. `fuser`
+
+**Definition:** `fuser` identifies processes that are using specified files or sockets.
+
+**What it does:** Identifies processes using files or sockets.
+
+**Key-Points:**
+
+- Useful for finding which process has a file or port open.
+- `-k` option kills processes using the file/socket.
+- `-v` provides verbose output with process details.
+- Requires root privileges for some operations.
+
+**Use case:** Find which process is using a file or port.
+
+**Example:**
+
+```bash
+fuser -v /dev/sda1
+```
+
+## 6. `nohup`
+
+**Definition:** `nohup` stands for "no hangup." It runs a command that ignores the SIGHUP signal.
+
+**What it does:** Runs a command immune to hangups (even after logout).
+
+**Key-Points:**
+
+- Output is redirected to nohup.out by default.
+- Allows long-running processes to continue after terminal logout.
+- Combine with & to run in background.
+- Useful for servers and batch jobs.
+
+**Use case:** Run long tasks without terminal interruption.
+
+**Example:**
+
+```bash
+nohup ./script.sh &
+```
+
+## 7. `free`
+
+**Definition:** `free` displays the amount of free and used memory in the system.
+
+**What it does:** Shows memory and swap usage.
+
+**Key-Points:**
+
+- `-h` option shows output in human-readable format (MB, GB).
+- Displays total, used, free, shared, buffers, and cached memory.
+- Includes swap space information.
+- Useful for quick memory checks; for detailed analysis, use `vmstat` or `top`.
+
+**Use case:** Check system RAM usage quickly.
+
+**Example:**
+
+```bash
+free -h
+```
+
+## 8. `vmstat`
+
+**Definition:** `vmstat` reports virtual memory statistics and system performance information.
+
+**What it does:** Displays system performance stats.
+
+**Key-Points:**
+
+- Shows CPU, memory, swap, I/O, and system statistics.
+- First line shows averages since boot; subsequent lines show current activity.
+- Arguments: delay between updates, number of updates.
+- Useful for monitoring system bottlenecks and performance trends.
+
+**Use case:** Monitor CPU, memory, and I/O status.
+
+**Example:**
+
+```bash
+vmstat 1 5
+```
+
+

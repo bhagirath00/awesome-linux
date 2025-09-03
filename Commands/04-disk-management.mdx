@@ -1,0 +1,139 @@
+---
+title: "04 - Disk Management Commands"
+---
+
+### 📁 `disk-management`
+
+```markdown
+# 04 - Disk Management Commands
+
+This section focuses on managing disk space, mounting/unmounting filesystems, and understanding persistent mount configurations.
+```
+
+## 1. `df`
+
+**Definition:** `df` stands for "disk free." It reports the amount of disk space used and available on mounted filesystems.
+
+**What it does:** Displays available and used disk space on mounted filesystems.
+
+**Key-Points:**
+
+- Use `-h` for human-readable output (e.g., GB, MB).
+- Shows filesystem, size, used, available, and mount point.
+- `-T` option displays filesystem type.
+- Useful for monitoring disk usage and identifying full partitions.
+
+**Use case:** Check how much storage is left on your system.
+
+**Example:**
+
+```bash
+df -h
+```
+
+## 2. `du`
+
+**Definition:** `du` stands for "disk usage." It estimates and displays the disk space used by files and directories.
+
+**What it does:** Shows disk usage of files and directories.
+
+**Key-Points:**
+
+- `-s` summarizes usage for each argument.
+- `-h` provides human-readable sizes.
+- `-a` includes all files, not just directories.
+- Useful for finding large files or directories consuming space.
+
+**Use case:** Identify which directories are using the most space.
+
+**Example:**
+
+```bash
+du -sh *
+```
+
+## 3. `mount`
+
+**Definition:** `mount` attaches a filesystem to a specified mount point in the directory tree.
+
+**What it does:** Mounts a filesystem to a directory.
+
+**Key-Points:**
+
+- Requires root privileges for most operations.
+- Can mount various types: local disks, USB, network shares.
+- Use `mount -t` to specify filesystem type (e.g., ext4, vfat).
+- Temporary mounts; for permanent, edit `/etc/fstab`.
+
+**Use case:** Attach USB drives or network storage for access.
+
+**Example:**
+
+```bash
+mount /dev/sdb1 /mnt
+```
+
+## 4. `umount`
+
+**Definition:** `umount` detaches a mounted filesystem from its mount point.
+
+**What it does:** Unmounts a mounted filesystem.
+
+**Key-Points:**
+
+- Ensures data is written and device is safe to remove.
+- Requires root privileges.
+- Use device name or mount point as argument.
+- Fails if filesystem is busy (files open); use `lsof` to check.
+
+**Use case:** Safely remove external drives before unplugging.
+
+**Example:**
+
+```bash
+umount /mnt
+```
+
+## 5. `fstab`
+
+**Definition:** `/etc/fstab` is the filesystem table configuration file that defines how disk partitions and storage devices are mounted at boot time.
+
+**What it does:** Refers to the configuration file `/etc/fstab` for auto-mounting filesystems.
+
+**Key-Points:**
+
+- Contains fields: device, mount point, filesystem type, options, dump, pass.
+- Edited manually or with tools like `blkid` for UUIDs.
+- Changes require system restart or `mount -a` to apply.
+- Critical for system boot; errors can prevent startup.
+
+**Use case:** Ensure storage devices are automatically mounted on boot.
+
+**Example:**
+
+```bash
+UUID=12A4-BC34  /media/usb   vfat    defaults,noauto,user  0   0
+```
+
+## 6. `cat /etc/fstab`
+
+**Definition:** `cat /etc/fstab` displays the contents of the filesystem table, showing configured mount points and options.
+
+**What it does:** Displays the contents of the fstab file.
+
+**Key-Points:**
+
+- Use `cat` or other viewers like `less` to read the file.
+- Requires read permissions on `/etc/fstab`.
+- Useful for verifying mount configurations before editing.
+- Backup recommended before modifications.
+
+**Use case:** View current auto-mount configurations.
+
+**Example:**
+
+```bash
+cat /etc/fstab
+```
+
+

@@ -1,0 +1,198 @@
+---
+title: "06 - Intermediate Linux Commands"
+---
+
+### 📁 `intermediate-commands`
+
+```markdown
+#  06 - Intermediate Linux Commands 
+
+These commands help with file manipulation, text processing, and working efficiently in the terminal.
+```
+
+
+
+## 1. `cp`
+
+**Definition:** `cp` stands for "copy." It copies files and directories from one location to another.
+
+**What it does:** Copies files and directories.
+
+**Key-Points:**
+*   Use `-r` or `-R` for recursive copying of directories.
+*   `-i` prompts before overwriting existing files.
+*   `-v` provides verbose output showing what's being copied.
+*   Preserves file attributes with `-p` option.
+
+**Use case:** Backup or duplicate files.
+
+**Example:**
+```bash
+cp file.txt backup.txt
+```
+
+
+
+## 2. `mv`
+
+**Definition:** `mv` stands for "move." It moves files and directories or renames them.
+
+**What it does:** Moves or renames files and directories.
+
+**Key-Points:**
+*   Can move multiple files to a directory.
+*   If destination is a directory, files are moved there; if a filename, it's renamed.
+*   `-i` prompts before overwriting.
+*   `-v` shows verbose output.
+
+**Use case:** Organize files or rename them.
+
+**Example:**
+```bash
+mv old.txt new.txt
+```
+
+
+
+## 3. `wc`
+
+**Definition:** `wc` stands for "word count." It counts lines, words, and characters in files.
+
+**What it does:** Counts lines, words, and characters in files.
+
+**Key-Points:**
+*   `-l` counts only lines.
+*   `-w` counts only words.
+*   `-c` counts only characters (bytes).
+*   Without options, shows all three counts plus filename.
+
+**Use case:** Get stats about a file.
+
+**Example:**
+```bash
+wc file.txt
+```
+
+
+
+## 4. `vi`
+
+**Definition:** `vi` is a modal text editor that allows editing files directly in the terminal.
+
+**What it does:** Opens the `vi` text editor.
+
+**Key-Points:**
+*   Has command mode (default) and insert mode.
+*   Common commands: i (insert), :w (save), :q (quit), :wq (save and quit).
+*   `vim` is an improved version with more features.
+*   Steep learning curve but very powerful for terminal editing.
+
+**Use case:** Edit configuration files or code directly in terminal.
+
+**Example:**
+```bash
+vi file.txt
+```
+
+
+## 5. `ln`
+
+**Definition:** `ln` creates links to files, either hard links or symbolic (soft) links.
+
+**What it does:** Creates symbolic or hard links to files.
+
+**Key-Points:**
+*   `-s` creates symbolic links (shortcuts that can point to directories).
+*   Hard links share the same inode; symbolic links are separate files.
+*   Symbolic links can span filesystems; hard links cannot.
+*   Removing the original file doesn't affect hard links but breaks symbolic links.
+
+**Use case:** Reference the same file from multiple locations.
+
+**Example:**
+```bash
+ln -s /path/to/file linkname
+```
+
+
+## 6. `cut`
+
+**Definition:** `cut` removes or extracts sections from each line of input, typically fields or characters.
+
+**What it does:** Removes sections from each line of input.
+
+**Key-Points:**
+*   `-d` specifies delimiter (default is tab).
+*   `-f` specifies fields to extract.
+*   `-c` cuts by character positions.
+*   Often used with pipes for text processing.
+
+**Use case:** Extract specific fields or columns from text.
+
+**Example:**
+```bash
+cut -d ":" -f1 /etc/passwd
+```
+
+
+## 7. `tee`
+
+**Definition:** `tee` reads from standard input and writes to both standard output and one or more files.
+
+**What it does:** Reads input and writes it to both stdout and a file.
+
+**Key-Points:**
+*   Useful for logging command output while still displaying it.
+*   `-a` appends to files instead of overwriting.
+*   Can write to multiple files simultaneously.
+*   Often used in pipelines: command | tee file.txt | another_command.
+
+**Use case:** Log command output while still displaying it.
+
+**Example:**
+```bash
+echo "Hello" | tee log.txt
+```
+
+
+## 8. `sort`
+
+**Definition:** `sort` sorts lines of text files alphabetically or numerically.
+
+**What it does:** Sorts lines of text files.
+
+**Key-Points:**
+*   `-r` sorts in reverse order.
+*   `-n` sorts numerically.
+*   `-k` sorts by specific field/column.
+*   `-u` removes duplicate lines.
+
+**Use case:** Alphabetize or order data in a file.
+
+**Example:**
+```bash
+sort names.txt
+```
+
+
+## 9. `clear`
+
+**Definition:** `clear` clears the terminal screen, providing a clean workspace.
+
+**What it does:** Clears the terminal screen.
+
+**Key-Points:**
+*   Alternative: Ctrl+L shortcut.
+*   Doesn't clear scrollback buffer, just current view.
+*   Useful for decluttering after long command outputs.
+*   Equivalent to `reset` but less aggressive.
+
+**Use case:** Remove clutter and get a clean view.
+
+**Example:**
+```bash
+clear
+```
+
+
+

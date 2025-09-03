@@ -1,0 +1,125 @@
+---
+title: "09 - Advanced Linux Commands"
+---
+
+### 📁`advanced-commands`
+
+```markdown
+# 09 - Advanced Linux Commands
+
+Powerful command-line tools for text processing, searching, and batch operations.
+```
+
+## 1. `grep`
+
+**Definition:** `grep` is a command-line utility for searching plain-text data for lines that match a regular expression.
+
+**What it does:** Searches for patterns in files using regular expressions.
+
+**Key-Points:**
+
+- `-i` makes the search case-insensitive.
+- `-r` searches recursively in directories.
+- `-v` inverts the match (shows lines that don't match).
+- `-n` shows line numbers.
+- Supports extended regex with `-E`.
+
+**Use case:** Find specific lines in logs or configs.
+
+**Example:**
+
+```bash
+grep "hello" file.txt           # Finds lines containing the word hello in file.txt.
+ps aux | grep nginx             # Filters running processes and shows only those related to nginx.
+grep -i "error" logfile.log     # Case-insensitive search for error in logfile.log.
+```
+
+## 2. `awk`
+
+**Definition:** `awk` is a programming language designed for text processing and typically used as a data extraction and reporting tool.
+
+**What it does:** Processes and analyzes text line-by-line and field-by-field.
+
+**Key-Points:**
+
+- Fields are separated by whitespace by default.
+- `$0` represents the entire line.
+- `$1`, `$2`, etc. represent individual fields.
+- Supports arithmetic operations and conditional statements.
+- Powerful for data manipulation and reporting.
+
+**Use case:** Extract columns, format text, perform calculations.
+
+**Example:**
+
+```bash
+awk '{print $1, $3}' data.txt
+```
+
+## 3. `sed`
+
+**Definition:** `sed` is a stream editor that performs basic text transformations on an input stream.
+
+**What it does:** Stream editor for filtering and transforming text.
+
+**Key-Points:**
+
+- `s/old/new/g` performs global find and replace.
+- `-i` edits files in place.
+- `-n` suppresses automatic printing.
+- Supports regular expressions.
+- Can process multiple files.
+
+**Use case:** Find and replace text in files.
+
+**Example:**
+
+```bash
+sed 's/old/new/g' file.txt
+```
+
+## 4. `find`
+
+**Definition:** `find` searches for files in a directory hierarchy based on various criteria.
+
+**What it does:** Searches for files and directories in a directory hierarchy.
+
+**Key-Points:**
+
+- `-name` searches by filename pattern.
+- `-type` specifies file type (f=file, d=directory).
+- `-size` searches by file size.
+- `-mtime` searches by modification time.
+- Can execute commands on found files with `-exec`.
+
+**Use case:** Locate files by name, type, size, etc.
+
+**Example:**
+
+```bash
+find /home -name "*.log"
+```
+
+## 5. `xargs`
+
+**Definition:** `xargs` builds and executes command lines from standard input, often used with `find`.
+
+**What it does:** Builds and executes command lines from input.
+
+**Key-Points:**
+
+- Converts input into arguments for commands.
+- `-n` limits number of arguments per command.
+- `-I` allows placeholder for input items.
+- Handles filenames with spaces using `-0` with `find -print0`.
+- Useful for processing large numbers of files.
+
+**Use case:** Use `find` results to execute commands.
+
+**Example:**
+
+```bash
+find . -name "*.log" | xargs rm
+```
+
+

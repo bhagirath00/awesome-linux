@@ -1,0 +1,125 @@
+---
+title: "10 - Compression Commands"
+---
+
+### 📁 `Compression-commands`
+
+```markdown
+# 10 - Compression Commands
+
+Used to compress or decompress files and directories.
+```
+
+## 1. `zip`
+
+**Definition:** `zip` is a compression and file packaging utility that creates `.zip` archives.
+
+**What it does:** Compresses files into `.zip` archives.
+
+**Key-Points:**
+
+- `-r` recursively includes directories.
+- `-9` uses maximum compression.
+- `-e` encrypts the archive.
+- Cross-platform compatible.
+- Can update existing archives.
+
+**Use case:** Reduce file size or bundle files for sharing.
+
+**Example:**
+
+```bash
+zip archive.zip file1.txt file2.txt
+```
+
+## 2. `gunzip`
+
+**Definition:** `gunzip` decompresses files compressed with `gzip`.
+
+**What it does:** Decompresses `.gz` files.
+
+**Key-Points:**
+
+- Equivalent to `gzip -d`.
+- Preserves original file permissions.
+- Can handle multiple files.
+- `-c` outputs to stdout instead of file.
+- `-f` forces overwrite of existing files.
+
+**Use case:** Extract a file compressed with `gzip`.
+
+**Example:**
+
+```bash
+gunzip file.txt.gz
+```
+
+## 3. `gzip`
+
+**Definition:** `gzip` compresses files using the Lempel-Ziv coding (LZ77).
+
+**What it does:** Compresses files into `.gz` format.
+
+**Key-Points:**
+
+- `-9` uses maximum compression.
+- `-d` decompresses (same as gunzip).
+- `-c` outputs to stdout.
+- `-r` recursively compresses directories.
+- Replaces original file by default.
+
+**Use case:** Save space by compressing large files.
+
+**Example:**
+
+```bash
+gzip file.txt
+```
+
+## 4. `tar`
+
+**Definition:** `tar` creates and manipulates archive files, often used with compression.
+
+**What it does:** Archives multiple files into a single `.tar` file (optionally compressed).
+
+**Key-Points:**
+
+- `-c` creates archive.
+- `-x` extracts archive.
+- `-v` verbose output.
+- `-f` specifies filename.
+- `-z` compresses with gzip.
+- `-j` compresses with bzip2.
+
+**Use case:** Create backups or bundles.
+
+**Example:**
+
+```bash
+tar -cvf archive.tar folder/
+```
+
+## 5. `tar -x` (untar)
+
+**Definition:** `tar -x` extracts files from tar archives, handling various compression formats.
+
+**What it does:** Extracts files from `.tar`, `.tar.gz`, `.tar.bz2` archives.
+
+**Key-Points:**
+
+- `-x` extracts files.
+- `-v` verbose output.
+- `-f` specifies archive file.
+- `-z` handles gzip compression.
+- `-j` handles bzip2 compression.
+- `-C` extracts to specific directory.
+
+**Use case:** Unpack archives.
+
+**Example:**
+
+```bash
+tar -xvf archive.tar
+```
+
+

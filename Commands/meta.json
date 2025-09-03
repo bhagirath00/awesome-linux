@@ -1,0 +1,15 @@
+{
+  "title": "Commands",
+  "pages": [
+    "01-basic-commands",
+    "02-file-permissions",
+    "03-user-management",
+    "04-disk-management",
+    "05-process-management",
+    "06-intermediate-commands",
+    "07-system-commands",
+    "08-networking-commands",
+    "09-advanced-commands",
+    "10-compression-commands"
+  ]
+}

@@ -1,0 +1,415 @@
+---
+title: "08 - Networking Commands"
+---
+
+### 📁`networking-commands`
+
+```markdown
+# 08 - Networking Commands
+
+Essential commands for checking, analyzing, and troubleshooting network configurations and connectivity.
+```
+
+## 1. `ifconfig`
+
+**Definition:** `ifconfig` is used to configure network interfaces, though it's largely replaced by `ip` command in modern systems.
+
+**What it does:** Displays or configures network interfaces.
+
+**Key-Points:**
+
+- Shows IP addresses, netmasks, and interface status.
+- Can bring interfaces up/down.
+- Requires root privileges for configuration changes.
+- `ip addr show` is the modern replacement.
+
+**Use case:** Check IP address and network status.
+
+**Example:**
+
+```bash
+ifconfig   # this will show you network interface
+```
+
+## 2. `ping`
+
+**Definition:** `ping` sends ICMP echo requests to test network connectivity and measure round-trip time.
+
+**What it does:** Sends ICMP requests to test network reachability.
+
+**Key-Points:**
+
+- `-c` specifies number of packets to send.
+- `-t` sets TTL (time to live).
+- Useful for testing basic connectivity.
+- Can be blocked by firewalls.
+
+**Use case:** Check if a host is reachable.
+
+**Example:**
+
+```bash
+ping google.com
+```
+
+## 3. `netstat`
+
+**Definition:** `netstat` displays network connections, routing tables, interface statistics, and more.
+
+**What it does:** Displays network connections, routing tables, and interface stats.
+
+**Key-Points:**
+
+- `-t` shows TCP connections.
+- `-u` shows UDP connections.
+- `-l` shows listening sockets.
+- `-n` shows numerical addresses.
+- Being replaced by `ss` command.
+
+**Use case:** Monitor network activity.
+
+**Example:**
+
+```bash
+netstat -tulnp
+```
+
+## 4. `curl`
+
+**Definition:** `curl` is a command-line tool for transferring data using various protocols.
+
+**What it does:** Transfers data from or to a server using URL syntax.
+
+**Key-Points:**
+
+- Supports HTTP, HTTPS, FTP, and more.
+- `-X` specifies HTTP method (GET, POST, etc.).
+- `-H` adds custom headers.
+- `-d` sends data in POST requests.
+- Powerful for API testing and automation.
+
+**Use case:** API testing, file download, sending requests.
+
+**Example:**
+
+```bash
+curl https://example.com
+```
+
+## 5. `nslookup`
+
+**Definition:** `nslookup` queries DNS servers to obtain domain name or IP address information.
+
+**What it does:** Queries DNS records for a domain.
+
+**Key-Points:**
+
+- Interactive mode available.
+- Can specify DNS server to query.
+- Shows various DNS record types.
+- `dig` is more powerful and preferred.
+
+**Use case:** Diagnose DNS resolution issues.
+
+**Example:**
+
+```bash
+nslookup example.com
+```
+
+## 6. `ss`
+
+**Definition:** `ss` is a utility for investigating sockets, providing detailed information about network connections.
+
+**What it does:** Displays socket statistics (replacement for netstat).
+
+**Key-Points:**
+
+- Faster and more detailed than netstat.
+- `-t` shows TCP sockets.
+- `-u` shows UDP sockets.
+- `-l` shows listening sockets.
+- `-n` shows numerical addresses.
+
+**Use case:** Check open ports and connections.
+
+**Example:**
+
+```bash
+ss -tuln
+```
+
+## 7. `dig`
+
+**Definition:** `dig` is a flexible command-line tool for interrogating DNS name servers.
+
+**What it does:** Performs detailed DNS lookups.
+
+**Key-Points:**
+
+- More powerful than nslookup.
+- Can query specific record types.
+- Shows detailed DNS response information.
+- Useful for DNS troubleshooting.
+
+**Use case:** Get DNS records, better than nslookup.
+
+**Example:**
+
+```bash
+dig example.com
+```
+
+## 8. `wget`
+
+**Definition:** `wget` is a free utility for non-interactive download of files from the Web.
+
+**What it does:** Non-interactive file download via HTTP, HTTPS, FTP.
+
+**Key-Points:**
+
+- `-O` specifies output filename.
+- `-c` resumes interrupted downloads.
+- `-r` enables recursive downloading.
+- Good for scripting and automation.
+
+**Use case:** Download files via URL.
+
+**Example:**
+
+```bash
+wget https://example.com/file.zip
+```
+
+## 9. `host`
+
+**Definition:** `host` is a simple utility for performing DNS lookups.
+
+**What it does:** Performs DNS lookup to resolve domain names.
+
+**Key-Points:**
+
+- Simpler than dig or nslookup.
+- Shows basic DNS information.
+- Can query specific DNS servers.
+- Part of the bind9-host package.
+
+**Use case:** Simple DNS checking.
+
+**Example:**
+
+```bash
+host example.com
+```
+
+## 10. `telnet`
+
+**Definition:** `telnet` is a user interface to the TELNET protocol for connecting to remote hosts.
+
+**What it does:** Connects to a host over TCP for troubleshooting.
+
+**Key-Points:**
+
+- Useful for testing port connectivity.
+- Insecure (sends data in plain text).
+- Being replaced by SSH for secure connections.
+- Can be used for banner grabbing.
+
+**Use case:** Test port connectivity.
+
+**Example:**
+
+```bash
+telnet google.com 80
+```
+
+## 11. `nmap`
+
+**Definition:** `nmap` is a network exploration tool and security/port scanner.
+
+**What it does:** Scans networks to discover hosts and services.
+
+**Key-Points:**
+
+- `-sS` performs SYN scan (stealthy).
+- `-p` specifies ports to scan.
+- `-A` enables OS detection and version scanning.
+- Powerful but requires careful use.
+
+**Use case:** Network auditing and security scans.
+
+**Example:**
+
+```bash
+nmap -sS 192.168.1.1
+```
+
+## 12. `arp`
+
+**Definition:** `arp` manipulates the system’s ARP cache, used for IP address to MAC address resolution.
+
+**What it does:** Displays/modifies the ARP cache.
+
+**Key-Points:**
+
+- `-a` shows all ARP entries.
+- `-d` deletes an entry.
+- `-s` adds a static entry.
+- Useful for troubleshooting Layer 2 connectivity.
+
+**Use case:** Check MAC address of devices.
+
+**Example:**
+
+```bash
+arp -a
+```
+
+## 13. `hostname`
+
+**Definition:** `hostname` displays or sets the system’s hostname.
+
+**What it does:** Displays or sets the system hostname.
+
+**Key-Points:**
+
+- Without arguments, shows current hostname.
+- Requires root to change hostname.
+- `-f` shows fully qualified domain name.
+- Changes are usually temporary unless configured permanently.
+
+**Use case:** Check or set your machine’s hostname.
+
+**Example:**
+
+```bash
+hostname
+```
+
+## 14. `whois`
+
+**Definition:** `whois` queries databases for information about domain names, IP addresses, and autonomous systems.
+
+**What it does:** Gets ownership and registration info for a domain.
+
+**Key-Points:**
+
+- Shows domain registration details.
+- Can query for IP addresses and ASNs.
+- Information varies by registrar.
+- Useful for domain research and troubleshooting.
+
+**Use case:** Find domain details like owner and registrar.
+
+**Example:**
+
+```bash
+whois example.com
+```
+
+## 15. `traceroute`
+
+**Definition:** `traceroute` traces the route that packets take to reach a network host.
+
+**What it does:** Traces the route packets take to reach a host.
+
+**Key-Points:**
+
+- Shows each hop in the path.
+- Displays round-trip times.
+- Requires root privileges on some systems.
+- Useful for identifying network bottlenecks.
+
+**Use case:** Diagnose network path issues.
+
+**Example:**
+
+```bash
+traceroute google.com
+```
+
+## 16. `tracepath`
+
+**Definition:** `tracepath` traces path to a network host discovering MTU along the path.
+
+**What it does:** Similar to traceroute but doesn’t require root access.
+
+**Key-Points:**
+
+- Discovers Maximum Transmission Unit (MTU) along the path.
+- Doesn't require root privileges.
+- Simpler output than traceroute.
+- Good for basic path tracing.
+
+**Use case:** Track the path to a destination.
+
+**Example:**
+
+```bash
+tracepath example.com
+```
+
+## 17. `mtr`
+
+**Definition:** `mtr` combines the functionality of ping and traceroute into a single network diagnostic tool.
+
+**What it does:** Combines ping and traceroute for network diagnostics.
+
+**Key-Points:**
+
+- Provides real-time statistics.
+- Shows packet loss and latency per hop.
+- Interactive interface with detailed information.
+- Excellent for ongoing network monitoring.
+
+**Use case:** Live view of network path stats.
+
+**Example:**
+
+```bash
+mtr google.com
+```
+
+## 18. `iwconfig`
+
+**Definition:** `iwconfig` is similar to ifconfig but dedicated to wireless interfaces.
+
+**What it does:** Configures wireless interfaces.
+
+**Key-Points:**
+
+- Shows wireless interface information.
+- Can set ESSID, mode, frequency.
+- Requires root privileges.
+- Being replaced by `iw` command in modern systems.
+
+**Use case:** View or change Wi-Fi settings.
+
+**Example:**
+
+```bash
+iwconfig
+```
+
+## 19. `ifplugstatus`
+
+**Definition:** `ifplugstatus` is a link detection utility for ethernet devices.
+
+**What it does:** Detects if network cable is plugged in.
+
+**Key-Points:**
+
+- Shows link status of ethernet interfaces.
+- Useful for detecting physical connectivity.
+- Can be used in scripts for monitoring.
+- Simple output: link beat detected or not.
+
+**Use case:** Check physical network connectivity.
+
+**Example:**
+
+```bash
+ifplugstatus
+```
+
+

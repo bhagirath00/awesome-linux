@@ -1,0 +1,276 @@
+---
+title: "01 - Basic Linux Commands"
+---
+
+### 📁 `basic-commands`
+
+```markdown
+# 01 - Basic Linux Commands
+
+This section covers the most frequently used Linux commands for file navigation, viewing, and basic management.
+```
+
+## 1. `pwd`
+
+**Definition:** `pwd` stands for "Print Working Directory." It's a command that displays the full path of the current directory you are in.
+
+**What it does:** Prints the current working directory path.
+
+**Key-Points:**
+
+- It's a simple command with no arguments.
+- It provides the absolute path, starting from the root directory (`/`).
+
+**Use case:** Know you where you are in the file system.
+
+**Examples:**
+
+```bash
+pwd
+```
+
+## 2. `ls`
+
+**Definition:** `ls` is short for "list." This command lists the files and directories within the current directory.
+
+**What it does:** Lists files and directories.
+
+**Key-Points:**
+
+- `ls -l` provides a "long listing" format, showing permissions, owner, size, and modification date.
+- `ls -a` shows all files, including "hidden" files that start with a dot (`.`).
+- These options can be combined: `ls -la`.
+
+**Use case:** View the contents of a folder.
+
+**Examples:**
+
+```bash
+ls                # List the avaiable files
+ls -l             # Detailed format
+ls -a             # Includes hidden files
+ls -la            # This shown all Hidden files in detailed
+```
+
+## 3. `cd`
+
+**Definition:** `cd` stands for "change directory." It's used to move from your current directory to another one.
+
+**What it does:** Changes the current directory.
+
+**Key-Points:**
+
+- `cd ..` moves you one directory level up.
+- `cd` or `cd ~` takes you to your home directory.
+- You can use absolute paths (e.g., `cd /var/log`) or relative paths (e.g., `cd my_folder`).
+
+**Use case:** Navigate through the file system.
+
+**Examples:**
+
+```bash
+cd                # /home/username
+cd ..             # Go one level up
+cd ~              # Go to home directory
+```
+
+## 4. `touch`
+
+**Definition:** The `touch` command is used to create an empty file. If the file already exists, it updates the file's timestamp (access and modification times) to the current time.
+
+**What it does:** Creates an empty file or updates timestamp.
+
+**Key-Points:**
+
+- If the file doesn't exist, it creates it.
+- If the file exists, it updates the timestamp without changing the content.
+
+**Use case:** Create placeholder files or update last modified time.
+
+**Example:**
+
+```bash
+touch file.txt    # Creates a new file
+touch file.java   # Creates a New JavaFile
+```
+
+## 5. `mkdir`
+
+**Definition:** `mkdir` stands for "make directory." It's used to create new directories (folders).
+
+**What it does:** Creates a new directory.
+
+**Key-Points:**
+
+- You can create multiple directories at once: `mkdir dir1 dir2 dir3`.
+- Use the `-p` option to create parent directories if they don't exist: `mkdir -p parent/child`.
+
+**Use case:** Create folders for organizing files.
+
+**Example:**
+
+```bash
+mkdir commands    #Creates a New Folder named 'commands'
+```
+
+## 6. `rm`
+
+**Definition:** `rm` is short for "remove." It's used to delete files and directories.
+
+**What it does:** Removes files or directories.
+
+**Key-Points:**
+
+- **Use with caution!** Once a file is deleted with `rm`, it's generally not recoverable.
+- To remove a directory and its contents, you must use the `-r` (recursive) option: `rm -r my_directory`.
+- The `-f` (force) option can be used to bypass confirmation prompts, but it's even more dangerous.
+
+**Use case:** Delete unnecessary files.
+
+**Examples:**
+
+```bash
+rm file.txt       # Delete the current folder
+rm -r folder/     # Delete folder recursively
+```
+
+## 7. `rmdir`
+
+**Definition:** `rmdir` stands for "remove directory." It's used to delete _empty_ directories.
+
+**What it does:** Removes empty directories.
+
+**Key-Points:**
+
+- The command will fail if the directory is not empty.
+- For deleting directories with content, use `rm -r`.
+
+**Use case:** Delete folders that are no longer needed.
+
+**Example:**
+
+```bash
+rmdir commands     # Delete the folders which is empty
+rmdir -r commands  # Delete the folder
+```
+
+## 8. `cat`
+
+**Definition:** `cat` is short for "concatenate." It's one of the most frequently used commands for displaying the content of files.
+
+**What it does:** Concatenates and displays file content.
+
+**Key-Points:**
+
+- It can display the content of multiple files: `cat file1.txt file2.txt`.
+- It can be used to create files: `cat > new_file.txt` (then type content and press Ctrl+D).
+- It can append content to a file: `cat >> existing_file.txt`.
+
+**Use case:** Quickly view or combine file contents.
+
+**Example:**
+
+```bash
+cat file.txt       # Show the avaiable data inside the file
+cat file1.txt file2.txt > combined.txt
+```
+
+## 9. `zcat`
+
+**Definition:** `zcat` is used to view the contents of a compressed file without decompressing it. It's equivalent to `gunzip -c`.
+
+**What it does:** Displays contents of a compressed file without extracting.
+
+**Key-Points:**
+
+- The original compressed file remains unchanged.
+- It only works for files compressed with `gzip` (ending in `.gz`).
+
+**Use case:** View `.gz` file content directly.
+
+**Example:**
+
+```bash
+zcat logs.gz        # show the data of compress files
+```
+
+## 10. `head`
+
+**Definition:** The `head` command displays the beginning of a file.
+
+**What it does:** Shows the first 10 lines of a file (by default).
+
+**Key-Points:**
+
+- You can specify the number of lines to show with the `-n` option: `head -n 20 file.txt`.
+
+**Use case:** Preview the top part of logs or files.
+
+**Example:**
+
+```bash
+head file.txt        # By Default 10 lines
+head -n 20 file.txt  # First 20 lines
+```
+
+## 11. `tail`
+
+**Definition:** The `tail` command displays the end of a file.
+
+**What it does:** Shows the last 10 lines of a file (by default).
+
+**Key-Points:**
+
+- Like `head`, you can use the `-n` option to specify the number of lines.
+- The `-f` (follow) option is very useful for monitoring log files in real-time.
+
+**Use case:** Check the latest logs or output lines.
+
+**Example:**
+
+```bash
+tail file.txt         # By Default 10 lines
+tail -f /var/log/syslog   # Live log view
+```
+
+## 12. `less`
+
+**Definition:** `less` is a program for viewing files in a paginated way. It allows you to scroll both forward and backward through the file.
+
+**What it does:** Opens a file for scrollable viewing (backward & forward).
+
+**Key-Points:**
+
+- It's more advanced than the `more` command.
+- You can search for text within the file.
+- Press `q` to quit.
+
+**Use case:** Read large files one page at a time.
+
+**Example:**
+
+```bash
+less file.txt         # Gives quick Sort data view
+```
+
+## 13. `more`
+
+**Definition:** `more` is an older command for viewing files one screen at a time. It only allows forward scrolling.
+
+**What it does:** Opens a file one screen at a time (forward only).
+
+**Key-Points:**
+
+- Press the spacebar to see the next page.
+- Press `q` to quit.
+- `less` is generally preferred over `more`.
+
+**Use case:** Older command for paging through file content.
+
+**Example:**
+
+```bash
+more file.txt         # Gives in full data
+```
+
+

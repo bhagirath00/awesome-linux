@@ -1,0 +1,181 @@
+---
+title: "03 - User Management Commands"
+---
+
+### 📁 `user-management`
+
+```markdown
+# 03 - User Management Commands
+
+This section covers commands to create, manage, and delete users and groups — essential for access control and system administration.
+```
+
+## 1. `useradd`
+
+**Definition:** `useradd` is a command used to create a new user account on the Linux system.
+
+**What it does:** Creates a new user on the system.
+
+**Key-Points:**
+
+- Creates a home directory by default unless specified otherwise.
+- Can set default shell, groups, and other user properties with options.
+- Requires root privileges to execute.
+- Use `useradd -m` to create the home directory explicitly.
+
+**Use case:** Add a new developer, admin, or service account.
+
+**Example:**
+
+```bash
+useradd admin
+```
+
+## 2. `passwd`
+
+**Definition:** `passwd` is used to change a user's password, either for the current user or another user (with appropriate privileges).
+
+**What it does:** Sets or changes a user password.
+
+**Key-Points:**
+
+- Users can change their own password; root can change any user's password.
+- Prompts for the current password (if changing own) and new password confirmation.
+- Enforces password policies if configured (e.g., minimum length, complexity).
+- Can lock/unlock accounts with options like `-l` and `-u`.
+
+**Use case:** Enforce or update credentials for login security.
+
+**Example:**
+
+```bash
+passwd root
+```
+
+## 3. `su`
+
+**Definition:** `su` stands for "switch user" or "substitute user." It allows switching to another user account.
+
+**What it does:** Switches to another user account.
+
+**Key-Points:**
+
+- Requires the target user's password unless run as root.
+- `su -` provides a full login environment (changes to user's home directory and loads their profile).
+- Commonly used to switch to root: `su - root` or simply `su -`.
+- Use with caution as it can lead to privilege escalation.
+
+**Use case:** Temporarily operate as a different user (commonly root).
+
+**Example:**
+
+```bash
+su admin
+```
+
+## 4. `userdel`
+
+**Definition:** `userdel` removes a user account from the system.
+
+**What it does:** Deletes a user account.
+
+**Key-Points:**
+
+- Does not remove the user's home directory by default; use `-r` to remove it.
+- Requires root privileges.
+- The user must be logged out for successful deletion.
+- Does not remove files owned by the user in other locations.
+
+**Use case:** Remove users who no longer need access to the system.
+
+**Example:**
+
+```bash
+userdel admin
+```
+
+## 5. `groupadd`
+
+**Definition:** `groupadd` creates a new group on the system.
+
+**What it does:** Creates a new user group.
+
+**Key-Points:**
+
+- Assigns a unique group ID (GID) automatically.
+- Can specify a custom GID with the `-g` option.
+- Requires root privileges.
+- Groups are used for organizing users and managing permissions.
+
+**Use case:** Organize users by access level or department.
+
+**Example:**
+
+```bash
+groupadd devops
+```
+
+## 6. `groupdel`
+
+**Definition:** `groupdel` removes an existing group from the system.
+
+**What it does:** Deletes an existing group.
+
+**Key-Points:**
+
+- Can only delete groups that are not the primary group for any user.
+- Requires root privileges.
+- Does not remove files or directories associated with the group.
+- Use with caution as it may affect permissions.
+
+**Use case:** Clean up groups that are no longer needed.
+
+**Example:**
+
+```bash
+groupdel devops
+```
+
+## 7. `gpasswd -a`
+
+**Definition:** `gpasswd -a` adds a user to a supplementary group.
+
+**What it does:** Adds a user to a group.
+
+**Key-Points:**
+
+- Adds the user to the group's supplementary membership.
+- Requires appropriate privileges (group administrator or root).
+- The user must exist before adding to a group.
+- Changes take effect on next login for the user.
+
+**Use case:** Grant group-level permissions to a user.
+
+**Example:**
+
+```bash
+gpasswd -a admin devops
+```
+
+## 8. `gpasswd -M`
+
+**Definition:** `gpasswd -M` sets the list of members for a group, replacing any existing members.
+
+**What it does:** Defines multiple users for a group (replaces existing group members).
+
+**Key-Points:**
+
+- Completely replaces the current group membership list.
+- Users must be separated by commas without spaces.
+- Requires group administrator or root privileges.
+- Useful for bulk management of group memberships.
+
+**Use case:** Bulk assign users to a group with precise control.
+
+**Example:**
+
+```bash
+gpasswd -M system,root,admin devops
+```
+
+

@@ -1,0 +1,224 @@
+---
+title: "07 - System Commands"
+---
+
+### 📁 `system-commands`
+
+```markdown
+# 07 - System Commands
+
+These commands help you gather system-level information and perform basic system operations.
+```
+
+## 1. `uname`
+
+**Definition:** `uname` displays system information such as the kernel name, version, and architecture.
+
+**What it does:** Displays system information like kernel name, version, architecture.
+
+**Key-Points:**
+
+- `-a` shows all available information.
+- `-s` shows kernel name.
+- `-r` shows kernel release.
+- `-m` shows machine hardware name.
+
+**Use case:** Check OS and system type.
+
+**Example:**
+
+```bash
+uname -a
+```
+
+## 2. `uptime`
+
+**Definition:** `uptime` shows how long the system has been running, including load averages.
+
+**What it does:** Shows how long the system has been running.
+
+**Key-Points:**
+
+- Displays current time, uptime, number of users, and load averages.
+- Load averages represent system load over 1, 5, and 15 minutes.
+- Useful for monitoring system performance and availability.
+- Part of the information shown by `w` command.
+
+**Use case:** Monitor system availability.
+
+**Example:**
+
+```bash
+uptime
+```
+
+## 3. `date`
+
+**Definition:** `date` displays or sets the system date and time.
+
+**What it does:** Displays or sets the system date and time.
+
+**Key-Points:**
+
+- Without arguments, shows current date and time.
+- Use format strings like "+%Y-%m-%d %H:%M:%S" for custom output.
+- Requires root privileges to set system time.
+- Often used in scripts for timestamps and logging.
+
+**Use case:** Log timestamps or sync time-related scripts.
+
+**Example:**
+
+```bash
+date "+%Y-%m-%d %H:%M:%S"
+```
+
+## 4. `whoami`
+
+**Definition:** `whoami` prints the username of the current user.
+
+**What it does:** Prints the current logged-in username.
+
+**Key-Points:**
+
+- Equivalent to `id -un`.
+- Shows the effective user ID's name.
+- Useful in scripts to determine the current user context.
+- Different from `who` which shows logged-in users.
+
+**Use case:** Confirm your active user session.
+
+**Example:**
+
+```bash
+whoami        #ubuntu/username
+```
+
+## 5. `which`
+
+**Definition:** `which` locates the executable file associated with a command.
+
+**What it does:** Shows the path of an executable command.
+
+**Key-Points:**
+
+- Searches the PATH environment variable for executables.
+- Shows the first match found.
+- Useful for finding where commands are installed.
+- `type` command provides similar but more detailed information.
+
+**Use case:** Locate installed commands.
+
+**Example:**
+
+```bash
+which python3
+```
+
+## 6. `id`
+
+**Definition:** `id` displays the user ID (UID), group ID (GID), and group memberships of a user.
+
+**What it does:** Displays user ID (UID), group ID (GID), and group memberships.
+
+**Key-Points:**
+
+- Without arguments, shows information for current user.
+- `-u` shows only UID.
+- `-g` shows only GID.
+- `-n` shows names instead of numbers.
+
+**Use case:** Check permissions context for a user.
+
+**Example:**
+
+```bash
+id
+```
+
+## 7. `sudo`
+
+**Definition:** `sudo` allows users to run commands as another user, typically root.
+
+**What it does:** Runs commands with superuser (root) privileges.
+
+**Key-Points:**
+
+- Requires user to be in sudoers file.
+- Prompts for user's password, not root's.
+- `-u` specifies different user.
+- `-i` starts interactive shell as root.
+
+**Use case:** Execute administrative tasks.
+
+**Example:**
+
+```bash
+sudo apt update
+```
+
+## 8. `apt`
+
+**Definition:** `apt` is a package management tool for Debian-based Linux distributions.
+
+**What it does:** Manages software packages on Debian-based systems.
+
+**Key-Points:**
+
+- `update` refreshes package list.
+- `upgrade` installs available updates.
+- `install` installs new packages.
+- `remove` uninstalls packages.
+- Requires root privileges for most operations.
+
+**Use case:** Install, update, and remove packages.
+
+**Example:**
+
+```bash
+sudo apt install nginx
+```
+
+## 9. `shutdown`
+
+**Definition:** `shutdown` brings the system down in a secure way.
+
+**What it does:** Safely powers off the system.
+
+**Key-Points:**
+
+- `-h` halts the system (power off).
+- `-r` reboots after shutdown.
+- Can specify time: `now` or `+5` (5 minutes).
+- Warns logged-in users before shutdown.
+
+**Use case:** Schedule or perform system shutdown.
+
+**Example:**
+
+```bash
+sudo shutdown now
+```
+
+## 10. `reboot`
+
+**Definition:** `reboot` restarts the system.
+
+**What it does:** Restarts the system.
+
+**Key-Points:**
+
+- Equivalent to `shutdown -r now`.
+- Requires root privileges.
+- Can be used when system needs restart for updates or configuration changes.
+- More immediate than scheduled shutdown.
+
+**Use case:** Apply updates or recover from issues.
+
+**Example:**
+
+```bash
+sudo reboot
+```
+
+
