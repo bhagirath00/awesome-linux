@@ -1,0 +1,19 @@
+# Shell & Temporary
+*.tmp
+*.swp
+*.bak
+*~
+
+# IDEs
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Docs metadata
+_meta.ts
