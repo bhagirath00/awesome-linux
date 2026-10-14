@@ -1,15 +1,16 @@
 <p align="center">
-  <img src="https://cdn.simpleicons.org/linux/FCC624" alt="Linux Logo" width="98">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://cdn.simpleicons.org/linux/white" />
+    <img alt="Linux Logo" src="https://cdn.simpleicons.org/linux/black" width="60" />
+  </picture>
 </p>
 
 <h1 align="center">Awesome Linux</h1>
 
 <p align="center">
   <a href="https://awesome.re"><picture><source media="(prefers-color-scheme: dark)" srcset="https://shieldcn.dev/badge/awesome.svg?variant=outline&amp;mode=dark&amp;font=geist&amp;logo=awesomelists" /><img alt="awesome" src="https://shieldcn.dev/badge/awesome.svg?variant=outline&amp;mode=light&amp;font=geist&amp;logo=awesomelists" /></picture></a>
-  <a href="https://kernel.org/"><picture><source media="(prefers-color-scheme: dark)" srcset="https://shieldcn.dev/badge/Linux-Kernel-FCC624.svg?variant=outline&amp;mode=dark&amp;font=geist&amp;logo=linux" /><img alt="Linux" src="https://shieldcn.dev/badge/Linux-Kernel-FCC624.svg?variant=outline&amp;mode=light&amp;font=geist&amp;logo=linux" /></picture></a>
-  <a href="https://github.com/bhagirath00/awesome-linux/blob/main/LICENSE"><picture><source media="(prefers-color-scheme: dark)" srcset="https://shieldcn.dev/github/license/bhagirath00/awesome-linux.svg?variant=outline&amp;mode=dark&amp;font=geist" /><img alt="license" src="https://shieldcn.dev/github/license/bhagirath00/awesome-linux.svg?variant=outline&amp;mode=light&amp;font=geist" /></picture></a>
-  <a href="https://github.com/bhagirath00/awesome-linux"><picture><source media="(prefers-color-scheme: dark)" srcset="https://shieldcn.dev/github/stars/bhagirath00/awesome-linux.svg?variant=outline&amp;mode=dark&amp;font=geist" /><img alt="stars" src="https://shieldcn.dev/github/stars/bhagirath00/awesome-linux.svg?variant=outline&amp;mode=dark&amp;font=geist" /></picture></a>
-  <a href="https://github.com/bhagirath00/awesome-linux"><picture><source media="(prefers-color-scheme: dark)" srcset="https://shieldcn.dev/views/repo/bhagirath00/awesome-linux.svg?variant=outline&amp;mode=dark&amp;font=geist" /><img alt="views" src="https://shieldcn.dev/views/repo/bhagirath00/awesome-linux.svg?variant=outline&amp;mode=light&amp;font=geist" /></picture></a>
+  <a href="https://kernel.org/"><picture><source media="(prefers-color-scheme: dark)" srcset="https://shieldcn.dev/badge/Linux-Kernel.svg?variant=outline&amp;mode=dark&amp;font=geist&amp;logo=linux" /><img alt="Linux" src="https://shieldcn.dev/badge/Linux-Kernel.svg?variant=outline&amp;mode=light&amp;font=geist&amp;logo=linux" /></picture></a>
+  <a href="LICENSE"><picture><source media="(prefers-color-scheme: dark)" srcset="https://shieldcn.dev/badge/license-MIT.svg?variant=outline&amp;mode=dark&amp;font=geist" /><img alt="license" src="https://shieldcn.dev/badge/license-MIT.svg?variant=outline&amp;mode=light&amp;font=geist" /></picture></a>
 </p>
 
 <p align="center">
